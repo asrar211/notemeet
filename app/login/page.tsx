@@ -7,7 +7,7 @@ export default function Login() {
         <div className={`flex justify-center items-center h-dvh bg-slate-50`}>
         <div className="absolute -left-20 top-24 h-72 w-72 rounded-full bg-sky-200/45 blur-3xl" />
         <div className="absolute bottom-20 left-1/3 h-72 w-72 rounded-full bg-cyan-200/35 blur-3xl" />
-            <form className={`px-4 py-10 ${glassCard} rounded-xl flex flex-col w-75 xl:w-100`}>
+            <form className={`px-4 py-10 ${glassCard} rounded-xl flex flex-col w-full mx-5 xl:w-100`}>
                 <label className="text-sm font-semibold text-slate-700 mb-1">Email</label>
                 <input 
                 className="px-1 py-1.5 border border-sky-200 rounded-lg outline-none text-base placeholder:text-sm placeholder:text-sky-300 focus:ring-3 focus:ring-slate-200 transition-all duration-300 text-slate-700"

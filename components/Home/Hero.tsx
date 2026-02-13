@@ -13,10 +13,10 @@ export default function Hero({mounted}: {mounted: boolean}) {
     return (
         <section className="relative flex min-h-[calc(100vh-6rem)] items-center justify-center px-4 pb-10 pt-20 sm:px-6 sm:pb-14">
       <div
-        className={`mx-auto grid w-full max-w-6xl gap-5 rounded-3xl p-6 sm:p-8 lg:grid-cols-[1.2fr,0.8fr] lg:gap-10 lg:p-10 transform-gpu transition-all duration-700 ${mounted ? "translate-y-0 scale-100 opacity-100" : "translate-y-6 scale-[0.98] opacity-0"}`}
+        className={`mx-auto grid w-full max-w-6xl gap-5 rounded-3xl lg:grid-cols-[1.2fr,0.8fr] lg:gap-10 lg:p-10 transform-gpu transition-all duration-700 ${mounted ? "translate-y-0 scale-100 opacity-100" : "translate-y-6 scale-[0.98] opacity-0"}`}
       >
         <div>
-          <p className="mb-4 inline-flex rounded-full border border-white/70 bg-white/75 px-3 py-1 text-xs font-medium tracking-[0.15em] text-sky-700">
+          <p className="mb-4 inline-flex rounded-full border border-white/70 bg-white/75 px-3 py-1 text-xs text-sky-700">
             SMART 1:1 CONVERSATION WORKSPACE
           </p>
           <h1 className="text-balance text-3xl font-black leading-[1.05] text-slate-950 sm:text-5xl lg:text-6xl">
