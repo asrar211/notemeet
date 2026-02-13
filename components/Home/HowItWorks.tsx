@@ -24,7 +24,7 @@ export default function HowItWorks({mounted}: {mounted: boolean}) {
       <div className="mx-auto max-w-6xl">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">How It Works</p>
         <h2 className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">From meeting to action in 3 steps</h2>
-        <div className="mt-8 overflow-x-invisible pb-2">
+        <div className="mt-8 overflow-x-auto pb-2">
           <div className="flex min-w-max gap-4 sm:min-w-0 sm:grid sm:grid-cols-3">
             {steps.map((step, index) => (
               <article
