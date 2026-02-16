@@ -1,3 +1,4 @@
+import DBConnect from "@/lib/db";
 import User from "@/models/User";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -6,12 +7,14 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const {name, email, username, password} = body;
-        if(!name || !email) {
+        if(!name || !email || !username || !password) {
             return NextResponse.json(
                 { error: "Missing required fields" },
                 { status: 400 }
             );
         }
+
+        await DBConnect();
 
         const existingUser = await User.findOne({email});
         if(existingUser) {
@@ -28,7 +31,7 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const user = User.create({
+        const user =await User.create({
             name, 
             email,
             username,
