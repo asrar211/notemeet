@@ -32,27 +32,44 @@ export async function POST(req: NextRequest, context: {params: Promise<{id: stri
         }
 
         if (meeting.hostId.toString() === session.user.id) {
-            return NextResponse.json(
-            { error: "Host cannot join as participant" },
-            { status: 400 });
-        }
+  meeting.status = "active";
+  await meeting.save();
 
-        if (meeting.participantId) {
-            if (meeting.participantId.toString() === session.user.id) {
-                return NextResponse.json(
-                { message: "Rejoined successfully" },
-                { status: 200 });
-        }
+  return NextResponse.json(
+    { message: "Host joined successfully" },
+    { status: 200 }
+  );
+}
+
+        const updatedMeeting = await Meeting.findOneAndUpdate(
+      {
+        meetingCode: id,
+        participantId: null, // Only update if no participant
+      },
+      {
+        participantId: session.user.id,
+        status: "active",
+      },
+      { new: true }
+    );
+
+    // If update failed, means participant already exists
+    if (!updatedMeeting) {
+      // Check if same participant is rejoining
+      if (
+        meeting.participantId &&
+        meeting.participantId.toString() === session.user.id
+      ) {
+        return NextResponse.json(
+          { message: "Rejoined successfully" },
+          { status: 200 }
+        );
+      }
 
         return NextResponse.json(
             { error: "Meeting already has a participant" },
             { status: 400 });
         }
-
-        meeting.participantId = session.user.id;
-        meeting.status = "active";
-
-        await meeting.save();
 
         return NextResponse.json(
             { message: "Joined successfully" },
